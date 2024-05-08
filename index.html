@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Translation Application</title>
+    <!-- Tailwind css CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Website logo -->
+    <link
+      rel="shortcut icon"
+      href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4GnAWX1txZLEwTruo20dRZTQYny8dfouyZmD-79QmyA&s"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="shadow py-5 px-8">
+        <div class="flex items-center">
+          <svg
+            class="h-5 cursor-pointer"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+          >
+            <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+            <path
+              d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+            />
+          </svg>
+          <h1 class="text-2xl font-semibold pl-6">Translate</h1>
+        </div>
+      </nav>
+    </header>
+    <main class="">
+      <div class="px-16 pt-16 flex gap-3 text-lg">
+        <div class="w-1/2 flex items-center relative">
+          <span id="source_language">English</span>
+          <div
+            id="languages_option_button"
+            class="hover:bg-gray-100 p-2 rounded-full cursor-pointer ml-4"
+          >
+            <svg
+              class="w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+              />
+            </svg>
+          </div>
+          <div
+            id="all_languages_list"
+            style="display: none"
+            class="grid grid-cols-6 overflow-hidden text-base bg-white gap-1 border border-gray-500 absolute top-10 z-10"
+          >
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Amharic
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Finnish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Malayl
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Telugu
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Arabic
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              French
+            </button>
+
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Malayalam
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Thai
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Basque
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              German
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Marathi
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Chinese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Bengali
+            </button>
+
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Greek
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Norwegian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Turkish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              English
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Gujarati
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Polish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Urdu
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Portuguese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hebrew
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Portuguese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Ukrainian
+            </button>
+
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Bulgarian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hindi
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Romanian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Vietnamese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Catalan
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hungarian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Russian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Welsh
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Cherokee
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Icelandic
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Serbian
+            </button>
+
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Croatian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Indonesian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Chinese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Czech
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Italian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Slovak
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Danish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Japanese
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Slovenian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Dutch
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Kannada
+            </button>
+
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Spanish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              English
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Korean
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Swahili
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Estonian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Latvian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Swedish
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Filipino
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Lithuanian
+            </button>
+            <button
+              class="select_laguage_button hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Tamil
+            </button>
+          </div>
+        </div>
+        <div class="w-1/2 flex items-center relative">
+          <span id="target_language">Hindi</span>
+          <div
+            id="languages_option_button_2"
+            class="hover:bg-gray-100 p-2 rounded-full cursor-pointer ml-4"
+          >
+            <svg
+              class="w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"
+              />
+            </svg>
+          </div>
+          <div
+            id="all_languages_list_2"
+            style="display: none"
+            class="grid grid-cols-6 overflow-hidden text-base bg-white gap-1 border border-gray-500 absolute top-10 z-10"
+          >
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Amharic
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Finnish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Malayl
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Telugu
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Arabic
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              French
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Malayalam
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Thai
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Basque
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              German
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Marathi
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Chinese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Bengali
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Greek
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Norwegian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Turkish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              English
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Gujarati
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Polish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Urdu
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Portuguese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hebrew
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Portuguese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Ukrainian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Bulgarian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hindi
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Romanian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Vietnamese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Catalan
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Hungarian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Russian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Welsh
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Cherokee
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Icelandic
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Serbian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Croatian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Indonesian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Chinese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Czech
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Italian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Slovak
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Danish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Japanese
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Slovenian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Dutch
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Kannada
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Spanish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              English
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Korean
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Swahili
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Estonian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Latvian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Swedish
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Filipino
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Lithuanian
+            </button>
+            <button
+              class="select_laguage_button_2 hover:bg-gray-100 py-1 rounded text-start px-2 w-28"
+            >
+              Tamil
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex px-16 pt-2 gap-3">
+        <div
+          class="w-1/2 min-h-44 rounded-lg bg-white border border-gray-300 relative"
+        >
+          <textarea
+            id="text_area_input_1"
+            class="w-full h-full py-3 px-4 text-2xl"
+            style="resize: none"
+          ></textarea>
+          <svg
+            id="delete_text_button"
+            class="absolute w-4 opacity-60 cursor-pointer hover:scale-110 active:scale-100 duration-100 right-4 top-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 384 512"
+          >
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            />
+          </svg>
+        </div>
+        <div class="w-1/2 min-h-44 rounded-lg bg-gray-100">
+          <textarea
+            id="text_area_input_2"
+            class="w-full h-full py-3 px-4 text-2xl bg-transparent"
+            style="resize: none"
+            disabled
+          ></textarea>
+        </div>
+      </div>
+      <div class="w-full flex justify-center mt-12">
+        <button
+          class="px-3 py-2 rounded-lg bg-blue-500 text-xl hover:scale-95 active:scale-100 duration-150 text-white"
+          onclick="translateText()"
+        >
+          Translate
+        </button>
+      </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="./script.js"></script>
+  </body>
+</html>
