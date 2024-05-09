@@ -17,6 +17,9 @@ let languages_option_button = document.getElementById(
 let languages_option_button_2 = document.getElementById(
   "languages_option_button_2"
 );
+let input_text_length_span = document.getElementById("input_text_length_span");
+
+let input_text_length = 0;
 
 text_area_input_2.value = "Translation";
 
@@ -119,23 +122,34 @@ let languages = {
 };
 
 text_area_input_1.addEventListener("input", () => {
-  // text_area_input_2.value = text_area_input_1.value;
   input_text = text_area_input_1.value;
   console.log(input_text);
   console.log(source_language);
   if (input_text === "") {
-    text_area_input_2.value = "";
+    text_area_input_2.value = "Translation";
+    delete_text_button.classList.add("hidden");
+    speech_button_1.classList.add("hidden");
   }
+  if(input_text !== "") {
+    delete_text_button.classList.remove("hidden");
+    speech_button_1.classList.remove("hidden");
+  }
+  input_text_length = input_text.length;
+  input_text_length_span.innerText = input_text_length;
 });
 
 // delete_text_button
 delete_text_button.addEventListener("click", () => {
   text_area_input_1.value = "";
+  input_text = "";
   text_area_input_2.value = "Translation";
+  delete_text_button.classList.add("hidden");
+  speech_button_1.classList.add("hidden");
 });
 
 const url = "https://google-translate1.p.rapidapi.com/language/translate/v2";
 
+// Main translate function which translate the text of one language to another
 async function translateText() {
   const options = {
     method: "POST",
@@ -162,6 +176,45 @@ async function translateText() {
     // console.log(translatedText);
     text_area_input_2.value = translatedText;
   } catch (error) {
-    console.error("Failed to translate:", error);
+    console.log("Failed to translate:", error);
   }
 }
+
+// Text to voice feature
+let speech_button_1 = document.getElementById("speech_button_1");
+let speech_button_1_pause_button = document.getElementById("speech_button_1_pause_button");
+
+function speakTranslation() {
+  var msg = new SpeechSynthesisUtterance();
+  msg.text = input_text;
+  msg.lang = source_language; // You can change this depending on the language of the text
+
+  window.speechSynthesis.speak(msg);
+  msg.onend = function(event) {
+    console.log('Speech has finished after ' + event.elapsedTime + ' milliseconds.');
+    onSpeechEnd();
+  };
+}
+
+// speech_button_1 when click then play speech
+speech_button_1.addEventListener("click", () => {
+  speakTranslation();
+  speech_button_1_pause_button.classList.remove("hidden");
+  speech_button_1.classList.add("hidden");
+})
+
+// speech_button_1 when click then pause speech
+speech_button_1_pause_button.addEventListener("click", () => {
+  window.speechSynthesis.cancel();
+  speech_button_1_pause_button.classList.add("hidden");
+  speech_button_1.classList.remove("hidden");
+})
+
+function onSpeechEnd() {
+  speech_button_1_pause_button.classList.add("hidden");
+  speech_button_1.classList.remove("hidden");
+}
+
+window.onload = function() {
+  window.speechSynthesis.cancel();
+};
