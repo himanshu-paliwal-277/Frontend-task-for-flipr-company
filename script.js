@@ -173,32 +173,37 @@ const url = "https://google-translate1.p.rapidapi.com/language/translate/v2/";
 // Main translate function which translate the text of one language to another
 async function translateText() {
   if (text_area_input_1.value != "") {
-    const options = {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        // "X-RapidAPI-Key": "b9829fe312msh00540c0145090b8p16cb32jsn0c9e337b1fd2",
-        "X-RapidAPI-Key": "9e5709100cmshec0a33455215d5fp153862jsn8ecc4d6856f9",
-        "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
-      },
-      body: new URLSearchParams({
-        // Text to translate
-        q: input_text,
-        // Source language (English)
-        source: source_language,
-        // Target language (Hindi)
-        target: target_language,
-      }).toString(),
-    };
+    if (source_language === target_language) {
+      text_area_input_2.value = input_text;
+    } else {
+      const options = {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          // "X-RapidAPI-Key": "b9829fe312msh00540c0145090b8p16cb32jsn0c9e337b1fd2",
+          "X-RapidAPI-Key":
+            "9e5709100cmshec0a33455215d5fp153862jsn8ecc4d6856f9",
+          "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
+        },
+        body: new URLSearchParams({
+          // Text to translate
+          q: input_text,
+          // Source language (English)
+          source: source_language,
+          // Target language (Hindi)
+          target: target_language,
+        }).toString(),
+      };
 
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json(); // Assuming the API returns JSON
-      const translatedText = result.data.translations[0].translatedText;
-      // console.log(translatedText);
-      text_area_input_2.value = translatedText;
-    } catch (error) {
-      console.log("Failed to translate:", error);
+      try {
+        const response = await fetch(url, options);
+        const result = await response.json(); // Assuming the API returns JSON
+        const translatedText = result.data.translations[0].translatedText;
+        // console.log(translatedText);
+        text_area_input_2.value = translatedText;
+      } catch (error) {
+        console.log("Failed to translate:", error);
+      }
     }
     setTimeout(() => {
       speech_button_2.classList.remove("hidden");
